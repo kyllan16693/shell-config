@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COMMON_SOFTWARE="git curl wget htop fzf tree unzip zip ripgrep tmux"
+COMMON_SOFTWARE="git curl wget htop fzf tree unzip zip"
 
 BASE_URL="https://sh.kyllan.dev"
 
