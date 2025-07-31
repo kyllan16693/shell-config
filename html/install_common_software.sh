@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COMMON_SOFTWARE="git curl wget htop fzf tree unzip zip"
+COMMON_SOFTWARE="git curl wget htop fzf tree unzip zip bat"
 
 BASE_URL="https://sh.kyllan.dev"
 
