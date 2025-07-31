@@ -34,6 +34,13 @@ install_oh_my_posh() {
     else
         curl -s https://ohmyposh.dev/install.sh | bash -s >"$temp_file" 2>&1 &
         spinner $! "Installing oh-my-posh"
+        
+        # Add ~/.local/bin to PATH if not already there
+        if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+            export PATH="$HOME/.local/bin:$PATH"
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshrc"
+            log_info "Added ~/.local/bin to PATH"
+        fi
     fi
 }
 
@@ -64,6 +71,13 @@ configure_oh_my_posh() {
     else
         curl -fsSL "$BASE_URL/conf/.zshrc" -o "$HOME/.zshrc" >"$temp_file" 2>&1 &
         spinner $! "Downloading .zshrc"
+    fi
+    
+    # Ensure PATH is set correctly for oh-my-posh and zoxide
+    if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+        export PATH="$HOME/.local/bin:$PATH"
+        echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshrc"
+        log_info "Added ~/.local/bin to PATH"
     fi
     
     log_info "oh-my-posh configuration completed."
