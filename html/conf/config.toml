@@ -1,0 +1,151 @@
+console_title_template = '{{.UserName}}@{{.HostName}} {{.Shell}} in {{.PWD}}'
+version = 3
+final_space = true
+
+[palette]
+  black = '#262B44'
+  blue = '#4B95E9'
+  green = '#59C9A5'
+  orange = '#F07623'
+  red = '#D81E5B'
+  white = '#E0DEF4'
+  yellow = '#F3AE35'
+
+[secondary_prompt]
+  template = '<p:yellow,transparent></><,p:yellow> > </><p:yellow,transparent></> '
+  foreground = 'p:black'
+  background = 'transparent'
+
+[upgrade]
+  source = 'cdn'
+  interval = '168h'
+  auto = false
+  notice = false
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    type = "os"
+    style = "plain"
+    foreground = "#26C6DA"
+    background = "transparent"
+    template = "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+
+    [properties]
+    macos = "mac"
+
+  [[blocks.segments]]
+    template = ' {{ path .Path .Location }}'
+    foreground = "#26C6DA"
+    background = "transparent"
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      style = 'full'
+
+  [[blocks.segments]]
+    type = 'git'
+    style = 'plain'
+    foreground = "#26C6DA"
+    background = "transparent"
+    template = ' {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <p:yellow>{{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }} <p:blue>[{{ .StashCount }}]</>{{ end }}{{ if gt .Ahead 0 }} <p:green>↑{{ .Ahead }}</>{{ end }}{{ if gt .Behind 0 }} <p:red>↓{{ .Behind }}</>{{ end }} '
+
+    [blocks.segments.properties]
+      fetch_status = true
+      branch_template = "{{ .Branch }}"
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+  overflow = 'hidden'
+
+  [[blocks.segments]]
+    template = ' '
+    foreground = 'p:green'
+    background = 'transparent'
+    type = 'node'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_package_manager = false
+      home_enabled = false
+
+  [[blocks.segments]]
+    template = ' '
+    foreground = 'p:blue'
+    background = 'transparent'
+    type = 'go'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      fetch_version = false
+
+  [[blocks.segments]]
+    template = '{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} '
+    foreground = 'p:yellow'
+    background = 'transparent'
+    type = 'python'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_version = false
+      fetch_virtual_env = true
+
+  [[blocks.segments]]
+    type = 'executiontime'
+    style = 'plain'
+    foreground = 'yellow'
+    background = 'transparent'
+    template = '{{ .FormattedMs }}'
+
+    [blocks.segments.properties]
+      threshold = 5000
+
+[[tooltips]]
+  leading_diamond = ''
+  trailing_diamond = ''
+  template = '  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} '
+  foreground = 'p:white'
+  background = 'p:orange'
+  type = 'aws'
+  style = 'diamond'
+  tips = ['aws']
+
+  [tooltips.properties]
+    display_default = true
+
+[[tooltips]]
+  leading_diamond = ''
+  trailing_diamond = ''
+  template = '  {{ .Name }} '
+  foreground = 'p:white'
+  background = 'p:blue'
+  type = 'az'
+  style = 'diamond'
+  tips = ['az']
+
+  [tooltips.properties]
+    display_default = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+  
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    foreground = "p:green"
+    background = "transparent"
+    template = '$'
+
+[transient_prompt]
+    style = 'plain'
+    foreground = "p:green"
+    background = "transparent"
+    template = '$ '
