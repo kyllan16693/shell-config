@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-COMMON_SOFTWARE="git curl wget htop fzf tree unzip zip ripgrep tmux lazygit"
+COMMON_SOFTWARE="git curl wget htop fzf tree unzip zip ripgrep tmux"
 
 BASE_URL="https://sh.kyllan.dev"
 
@@ -84,6 +84,14 @@ install_zoxide() {
     
     curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh >"$temp_file" 2>&1 &
     spinner $! "Installing zoxide"
+    
+    # Add ~/.local/bin to PATH if not already there
+    if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+        export PATH="$HOME/.local/bin:$PATH"
+        echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
+        echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshrc"
+        log_info "Added ~/.local/bin to PATH"
+    fi
 }
 
 # Function to install common software
