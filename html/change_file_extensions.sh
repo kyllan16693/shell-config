@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-BASE_URL="https://10.0.0.24"
+BASE_URL="https://sh.kyllan.dev"
 
 # Function to download and source a script
 download_and_source_script() {
