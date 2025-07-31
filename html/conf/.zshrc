@@ -1,4 +1,4 @@
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 plugins=(git)
 
 # Set the directory we want to store zinit and plugins
@@ -71,4 +71,4 @@ fi
 alias ls='eza --icons --color=always --all --git --sort date'
 alias l='eza --icons --color=always'
 alias tree='eza --tree --icons --color=always --all --git'
-alias cat='bat --color=always'
+alias cat='batcat --color=always'
