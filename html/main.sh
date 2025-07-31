@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BASE_URL="https://kassel.sh"
+BASE_URL="https://10.0.0.24"
 
 DEBUG=false
 

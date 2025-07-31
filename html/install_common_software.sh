@@ -2,7 +2,7 @@
 
 COMMON_SOFTWARE="git curl wget htop fzf git-lfs tree jq unzip zip ripgrep eza delta tmux lazygit bat"
 
-BASE_URL="https://kassel.sh"
+BASE_URL="https://10.0.0.24"
 
 # Function to download and source a script
 download_and_source_script() {
