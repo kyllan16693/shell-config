@@ -1,3 +1,4 @@
+export PATH="$HOME/.local/bin:$PATH"
 plugins=(git)
 
 # Set the directory we want to store zinit and plugins
